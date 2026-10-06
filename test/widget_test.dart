@@ -11,20 +11,86 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:pet_feeder/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('renders the pet feeder dashboard', (WidgetTester tester) async {
+    await tester.pumpWidget(const PetFeederApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text('PetFeeder'), findsOneWidget);
+    await tester.scrollUntilVisible(
+      find.text('Alimentar agora'),
+      300,
+      scrollable: find.byType(Scrollable),
+    );
+    expect(find.text('Alimentar agora'), findsOneWidget);
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+  testWidgets('navigates through all feeder areas', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(const PetFeederApp());
+
+    await tester.tap(find.text('Ração'));
+    await tester.pumpAndSettle();
+    expect(find.text('PORÇÃO MANUAL'), findsOneWidget);
+
+    await tester.tap(find.text('Água'));
+    await tester.pumpAndSettle();
+    expect(find.text('VOLUME MANUAL'), findsOneWidget);
+
+    await tester.tap(find.text('Horários'));
+    await tester.pumpAndSettle();
+    expect(find.text('Novo horário'), findsOneWidget);
+
+    await tester.tap(find.text('Histórico'));
+    await tester.pumpAndSettle();
+    expect(find.text('Refeições recentes'), findsOneWidget);
+
+    await tester.tap(find.text('Ajustes'));
+    await tester.pumpAndSettle();
+    expect(find.text('Conexão da máquina'), findsOneWidget);
+  });
+
+  testWidgets('closes and saves the pet details dialog safely', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(const PetFeederApp());
+    await tester.tap(find.text('Ajustes'));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.edit_outlined));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Cancelar'));
+    await tester.pumpAndSettle();
+    expect(find.text('Thor'), findsOneWidget);
+
+    await tester.tap(find.byIcon(Icons.edit_outlined));
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byType(TextField).at(0), 'Luna');
+    await tester.enterText(find.byType(TextField).at(1), 'Border Collie');
+    await tester.tap(find.text('Salvar'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Luna'), findsOneWidget);
+    expect(find.textContaining('Border Collie'), findsOneWidget);
+  });
+
+  testWidgets('releases water and updates the reservoir level', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(const PetFeederApp());
+    await tester.tap(find.text('Água'));
+    await tester.pumpAndSettle();
+
+    await tester.scrollUntilVisible(
+      find.text('Liberar 250 ml'),
+      300,
+      scrollable: find.byType(Scrollable),
+    );
+    await tester.tap(find.text('Liberar 250 ml'));
+    await tester.pump(const Duration(milliseconds: 700));
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    await tester.drag(find.byType(Scrollable), const Offset(0, 900));
+    await tester.pumpAndSettle();
+    expect(find.text('70% · 1,4 L disponível'), findsOneWidget);
   });
 }
