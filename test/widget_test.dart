@@ -49,7 +49,7 @@ void main() {
     expect(find.text('Conexão da máquina'), findsOneWidget);
   });
 
-  testWidgets('closes and saves the pet details dialog safely', (
+  testWidgets('closes and saves name, breed, age and species safely', (
     WidgetTester tester,
   ) async {
     await tester.pumpWidget(const PetFeederApp());
@@ -66,11 +66,17 @@ void main() {
     await tester.pumpAndSettle();
     await tester.enterText(find.byType(TextField).at(0), 'Luna');
     await tester.enterText(find.byType(TextField).at(1), 'Border Collie');
+    await tester.enterText(find.byType(TextField).at(2), '4');
+    await tester.tap(find.text('Gato'));
     await tester.tap(find.text('Salvar'));
     await tester.pumpAndSettle();
 
     expect(find.text('Luna'), findsOneWidget);
-    expect(find.textContaining('Border Collie'), findsOneWidget);
+    expect(
+      find.textContaining('Gato · Border Collie · 4 anos'),
+      findsOneWidget,
+    );
+    expect(find.text('🐱'), findsOneWidget);
   });
 
   testWidgets('releases water and updates the reservoir level', (

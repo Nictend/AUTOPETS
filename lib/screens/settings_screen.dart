@@ -205,9 +205,13 @@ class _EditPetDialogState extends State<_EditPetDialog> {
     super.initState();
     _nameController = TextEditingController(text: widget.pet.name);
     _breedController = TextEditingController(text: widget.pet.breed);
-    _ageController = TextEditingController(text: widget.pet.ageInYears.toString());
+    _ageController = TextEditingController(
+      text: widget.pet.ageInYears.toString(),
+    );
 
-    final matchingKind = commonPetKinds.where((kind) => kind.species == widget.pet.species);
+    final matchingKind = commonPetKinds.where(
+      (kind) => kind.species == widget.pet.species,
+    );
     _selectedKind = matchingKind.isEmpty
         ? commonPetKinds.last
         : matchingKind.first;
@@ -233,9 +237,15 @@ class _EditPetDialogState extends State<_EditPetDialog> {
         ? _otherSpeciesController.text.trim()
         : _selectedKind.species;
 
-    if (name.isEmpty || breed.isEmpty || species.isEmpty || age == null || age < 0 || age > 99) {
+    if (name.isEmpty ||
+        breed.isEmpty ||
+        species.isEmpty ||
+        age == null ||
+        age < 0 ||
+        age > 99) {
       setState(() {
-        _validationMessage = 'Preencha nome, raça, espécie e uma idade entre 0 e 99 anos.';
+        _validationMessage =
+            'Preencha nome, raça, espécie e uma idade entre 0 e 99 anos.';
       });
       return;
     }
@@ -289,7 +299,9 @@ class _EditPetDialogState extends State<_EditPetDialog> {
             const SizedBox(height: 24),
             Text(
               'Tipo de animal',
-              style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w800),
+              style: theme.textTheme.titleSmall?.copyWith(
+                fontWeight: FontWeight.w800,
+              ),
             ),
             const SizedBox(height: 10),
             Wrap(
@@ -313,7 +325,9 @@ class _EditPetDialogState extends State<_EditPetDialog> {
               TextField(
                 controller: _otherSpeciesController,
                 textCapitalization: TextCapitalization.words,
-                decoration: const InputDecoration(labelText: 'Qual é o animal?'),
+                decoration: const InputDecoration(
+                  labelText: 'Qual é o animal?',
+                ),
                 onSubmitted: (_) => _save(),
               ),
             ],
@@ -321,7 +335,9 @@ class _EditPetDialogState extends State<_EditPetDialog> {
               const SizedBox(height: 14),
               Text(
                 _validationMessage!,
-                style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.error),
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: theme.colorScheme.error,
+                ),
               ),
             ],
           ],
