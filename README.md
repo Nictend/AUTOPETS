@@ -99,7 +99,7 @@ q  → Encerrar a execução
 
 ## Compilando no Windows
 
-No Windows, recomenda-se utilizar o **PowerShell** ou o terminal integrado do Android Studio.
+No Windows, recomendamos utilizar o **PowerShell** ou o terminal integrado do Android Studio.
 
 ### 1. Instalar as ferramentas necessárias
 
