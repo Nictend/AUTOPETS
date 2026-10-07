@@ -10,7 +10,6 @@ Este repositório é mantido por **Nicolas G. (Nictend)** e reúne o código-fon
 >
 > O projeto é desenvolvido e testado principalmente em **Linux**.  
 > O Flutter possui suporte oficial para desenvolvimento em Linux, Windows e macOS, portanto o projeto também pode ser compilado nesses sistemas. Entretanto, podem existir pequenas diferenças relacionadas à configuração do Flutter SDK, Android SDK, variáveis de ambiente ou ferramentas utilizadas.  
-> Windows e macOS podem não ser testados com a mesma frequência que o ambiente principal de desenvolvimento.
 
 ---
 
