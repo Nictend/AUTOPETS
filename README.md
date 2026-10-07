@@ -6,7 +6,7 @@ O aplicativo foi desenvolvido utilizando **Flutter** e **Dart** e tem como objet
 
 Este repositório é mantido por **Nicolas G. (Nictend)** e reúne o código-fonte, estrutura e arquivos necessários para a compilação e execução do aplicativo.
 
-> [!NOTE]
+> [!NOTA]
 > O projeto é desenvolvido e testado principalmente no **Linux**.  
 > O Flutter possui suporte oficial para desenvolvimento em Linux, Windows e macOS, portanto o projeto também pode ser compilado nesses sistemas. Entretanto, podem existir pequenas diferenças relacionadas à configuração do Flutter SDK, Android SDK, variáveis de ambiente ou ferramentas utilizadas.  
 > Windows e macOS podem não ser testados com a mesma frequência que o ambiente principal de desenvolvimento.
