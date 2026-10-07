@@ -7,8 +7,6 @@ O aplicativo foi desenvolvido utilizando **Flutter** e **Dart** e tem como objet
 Este repositório é mantido por **Nicolas G. (Nictend)** e reúne o código-fonte, estrutura e arquivos necessários para a compilação e execução do aplicativo.
 
 > [!NOTE]
-> **Nota**
->
 > O projeto é desenvolvido e testado principalmente em **Linux**.  
 > O Flutter possui suporte oficial para desenvolvimento em Linux, Windows e macOS, portanto o projeto também pode ser compilado nesses sistemas. Entretanto, podem existir pequenas diferenças relacionadas à configuração do Flutter SDK, Android SDK, variáveis de ambiente ou ferramentas utilizadas.
 
@@ -187,8 +185,6 @@ build\app\outputs\flutter-apk\app-release.apk
 ```
 
 > [!IMPORTANT]
-> **Importante**
->
 > Essa compilação gera o aplicativo **Android (`.apk`)** utilizando um computador Windows. Ela não gera um aplicativo nativo `.exe` para Windows.
 
 ---
