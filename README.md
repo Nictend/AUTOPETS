@@ -185,7 +185,7 @@ O APK será criado em:
 build\app\outputs\flutter-apk\app-release.apk
 ```
 
-> [!IMPORTANTE]
+> [IMPORTANTE]
 > Essa compilação gera o aplicativo **Android (`.apk`)** utilizando um computador Windows. Ela não gera um aplicativo nativo `.exe` para Windows.
 
 ---
